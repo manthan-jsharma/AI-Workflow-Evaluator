@@ -129,7 +129,7 @@ The prompt engineering here is the core intellectual work of this project. Key d
 
 ---
 
-## Session Plan
+## Session Plan : This is what i use while Prompting AI about next Task, example Prompt -> Reference Session 2, "complete requirements with an additional feature ('...') -> "Bug was introduced, here is the context..."
 
 ### Session 1 — Project scaffold + parser
 

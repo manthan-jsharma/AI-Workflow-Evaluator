@@ -1,4 +1,5 @@
 # WorkflowIQ — AI Workflow Evaluator
+First i would like you to read the Architecture.md file, this is where i have designed the entire Evaluation Process, what i am trying to build and what i am not trying to build, Helps a lot when using AI based Workflow.
 
 Evaluates *how* an engineer uses AI during software development — not what the code looks like, but the quality of the collaboration process.
 
@@ -11,9 +12,8 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:5173`. You need a [Google Gemini API key](https://aistudio.google.com/app/apikey) — paste it into the key field on the upload screen.
+Open `http://localhost:5173`. You need an LLM API Key — paste it into the key field on the upload screen.
 
-The key is held in component state only. It is never written to localStorage, sessionStorage, or any server.
 
 ---
 
@@ -63,10 +63,10 @@ The **overall score** (0–100) is a holistic judgment by the model — not a me
 ## Architecture decisions
 
 ### Client-side only
-No backend. The Gemini API is called directly from the browser. Transcript data never leaves the user's machine (except to the Gemini API endpoint). For a personal/assessment tool, the tradeoff is acceptable.
+No backend. The LLM is called directly from the browser. Transcript data never leaves the user's machine (except to the Gemini API endpoint). For a personal/assessment tool, the tradeoff is acceptable.
 
 ### LLM evaluation, not heuristics
-Heuristics can count prompt length. They can't distinguish a 20-word prompt that is excellent ("here's the middleware throwing 500 — trace the error path") from one that is useless ("fix my code"). Gemini understands intent and context quality.
+Heuristics can count prompt length. They can't distinguish a 20-word prompt that is excellent ("here's the middleware throwing 500 — trace the error path") from one that is useless ("fix my code"). LLM understands intent and context quality.
 
 ### 6-tier parser with graceful fallback
 Real transcript exports look very different across tools. A single regex breaks on every tool that isn't the one you wrote it for. Falling through to alternating-block is better than failing entirely, and the warning badge makes the uncertainty visible.
